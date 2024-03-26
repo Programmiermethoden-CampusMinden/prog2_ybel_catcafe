@@ -12,7 +12,7 @@ This represents the student support code for the [Cat-Café task].
 
 This [work] by [Carsten Gips] and [contributors] is licensed under [MIT].
 
-  [Cat-Café task]: https://github.com/Programmiermethoden-CampusMinden/Prog2-Lecture/blob/master/homework/b06.md
+  [Cat-Café task]: https://github.com/Programmiermethoden-CampusMinden/Prog2-Lecture/blob/master/homework/b07.md
   [work]: https://github.com/Programmiermethoden-CampusMinden/prog2_ybel_catcafe
   [Carsten Gips]: https://github.com/cagix
   [contributors]: https://github.com/Programmiermethoden-CampusMinden/prog2_ybel_catcafe/graphs/contributors
