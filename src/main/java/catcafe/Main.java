@@ -1,5 +1,7 @@
 package catcafe;
 
+import java.util.Optional;
+
 /** Starter for the cat-café task. */
 public class Main {
     /**
@@ -17,13 +19,15 @@ public class Main {
 
         System.out.println("Es schnurren " + cafe.getCatCount() + " Samtpfötchen.");
 
-        FelineOverLord meow = cafe.getCatByWeight(3, 4);
-        if (meow != null) System.out.println("Gewicht [3,4]: " + meow);
+        Optional<FelineOverLord> optionalCat;
 
-        meow = cafe.getCatByName("Morticia");
-        if (meow != null) System.out.println("Name 'Morticia': " + meow);
+        optionalCat = cafe.getCatByWeight(3, 4);
+        optionalCat.ifPresent(cat -> System.out.println("Gewicht [3,4]: " + cat));
 
-        meow = cafe.getCatByName("Miss Chief Sooky");
-        if (meow != null) System.out.println("Name 'Miss Chief Sooky': " + meow);
+        optionalCat = cafe.getCatByName("Morticia");
+        optionalCat.ifPresent(cat -> System.out.println("Name 'Morticia': " + cat));
+
+        optionalCat = cafe.getCatByName("Miss Chief Sooky");
+        optionalCat.ifPresent(cat -> System.out.println("Name 'Miss Chief Sooky': " + cat));
     }
 }
