@@ -408,7 +408,7 @@ public class NodeTest {
         assertEquals(
                 "wuppie",
                 n.accept(
-                        new TreeVisitor<Dummy>() {
+                        new TreeVisitor<>() {
                             @Override
                             public String visit(Empty<Dummy> node) {
                                 return "";
@@ -501,8 +501,8 @@ public class NodeTest {
         n = n.addData(c3); // c1 < c3 < c2: add c3 as new rightChild-leftChild child
         // A(, B(C(,),))
 
-        long count = n.stream().map(Dummy::toString).count();
-        int number = n.stream().map(x -> x.number).reduce(0, (x, a) -> x + a);
+        long count = n.stream().count();
+        int number = n.stream().map(x -> x.number).reduce(0, Integer::sum);
         String string = n.stream().map(x -> x.name).collect(Collectors.joining());
 
         assertEquals(3, count);

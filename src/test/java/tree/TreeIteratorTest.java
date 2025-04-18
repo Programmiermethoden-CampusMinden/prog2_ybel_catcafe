@@ -30,7 +30,7 @@ public class TreeIteratorTest {
     /** Ctor should not allow {@code null} data. */
     @Test
     public void testCtorRootNull() {
-        assertThrows(NullPointerException.class, () -> new TreeIterator(null));
+        assertThrows(NullPointerException.class, () -> new TreeIterator<>(null));
     }
 
     /** Iterating over empty tree. */
@@ -41,7 +41,7 @@ public class TreeIteratorTest {
         Iterator<Dummy> i = new TreeIterator<>(e);
 
         assertFalse(i.hasNext());
-        assertThrows(NoSuchElementException.class, () -> i.next());
+        assertThrows(NoSuchElementException.class, i::next);
     }
 
     /** Iterating over single node. */
@@ -58,7 +58,7 @@ public class TreeIteratorTest {
         assertEquals(c, i.next());
 
         assertFalse(i.hasNext());
-        assertThrows(NoSuchElementException.class, () -> i.next());
+        assertThrows(NoSuchElementException.class, i::next);
     }
 
     /** Iterating over simple tree. */
@@ -86,7 +86,7 @@ public class TreeIteratorTest {
         assertEquals(c1, i.next());
 
         assertFalse(i.hasNext());
-        assertThrows(NoSuchElementException.class, () -> i.next());
+        assertThrows(NoSuchElementException.class, i::next);
     }
 
     /** Iterating over simple tree. */
@@ -114,7 +114,7 @@ public class TreeIteratorTest {
         assertEquals(c1, i.next());
 
         assertFalse(i.hasNext());
-        assertThrows(NoSuchElementException.class, () -> i.next());
+        assertThrows(NoSuchElementException.class, i::next);
     }
 
     /** Iterating over simple tree. */
@@ -142,7 +142,7 @@ public class TreeIteratorTest {
         assertEquals(c2, i.next());
 
         assertFalse(i.hasNext());
-        assertThrows(NoSuchElementException.class, () -> i.next());
+        assertThrows(NoSuchElementException.class, i::next);
     }
 
     /** Iterating over simple tree. */
@@ -170,6 +170,6 @@ public class TreeIteratorTest {
         assertEquals(c3, i.next());
 
         assertFalse(i.hasNext());
-        assertThrows(NoSuchElementException.class, () -> i.next());
+        assertThrows(NoSuchElementException.class, i::next);
     }
 }

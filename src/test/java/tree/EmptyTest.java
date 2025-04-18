@@ -23,9 +23,9 @@ public class EmptyTest {
     public void testCtorNode() {
         Tree<Dummy> e = new Empty<>();
 
-        assertThrows(UnsupportedOperationException.class, () -> e.data());
-        assertThrows(UnsupportedOperationException.class, () -> e.leftChild());
-        assertThrows(UnsupportedOperationException.class, () -> e.rightChild());
+        assertThrows(UnsupportedOperationException.class, e::data);
+        assertThrows(UnsupportedOperationException.class, e::leftChild);
+        assertThrows(UnsupportedOperationException.class, e::rightChild);
     }
 
     /** The getter for the data object should throw an UnsupportedOperationException. */
@@ -33,7 +33,7 @@ public class EmptyTest {
     public void testGetData() {
         Tree<Dummy> e = new Empty<>();
 
-        assertThrows(UnsupportedOperationException.class, () -> e.data());
+        assertThrows(UnsupportedOperationException.class, e::data);
     }
 
     /** The getter for the leftChild child should throw an UnsupportedOperationException. */
@@ -41,7 +41,7 @@ public class EmptyTest {
     public void testGetLeftChild() {
         Tree<Dummy> e = new Empty<>();
 
-        assertThrows(UnsupportedOperationException.class, () -> e.leftChild());
+        assertThrows(UnsupportedOperationException.class, e::leftChild);
     }
 
     /** The getter for the leftChild child should throw an UnsupportedOperationException. */
@@ -49,7 +49,7 @@ public class EmptyTest {
     public void testGetRightChild() {
         Tree<Dummy> e = new Empty<>();
 
-        assertThrows(UnsupportedOperationException.class, () -> e.rightChild());
+        assertThrows(UnsupportedOperationException.class, e::rightChild);
     }
 
     /** This node is always empty. */
@@ -106,7 +106,7 @@ public class EmptyTest {
         assertEquals(
                 "",
                 e.accept(
-                        new TreeVisitor<Dummy>() {
+                        new TreeVisitor<>() {
                             @Override
                             public String visit(Empty<Dummy> node) {
                                 return "";
@@ -136,7 +136,7 @@ public class EmptyTest {
         Tree<Dummy> e = new Empty<>();
         int count = 0;
 
-        for (Dummy d : e) ++count;
+        for (Dummy _d : e) ++count;
 
         assertEquals(0, count);
     }
@@ -159,7 +159,7 @@ public class EmptyTest {
         Tree<Dummy> e = new Empty<>();
         Stream<Dummy> s = e.stream();
 
-        long c = s.map(Dummy::toString).count();
+        long c = s.count();
 
         assertNotNull(s);
         assertEquals(0, c);
