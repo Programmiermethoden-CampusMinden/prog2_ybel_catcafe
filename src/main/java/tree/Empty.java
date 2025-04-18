@@ -22,7 +22,7 @@ public record Empty<T extends Comparable<T>>() implements Tree<T> {
     public Tree<T> addData(T data) {
         requireNonNull(data);
 
-        return new Node(new Empty(), data, new Empty());
+        return new Node<>(new Empty<>(), data, new Empty<>());
     }
 
     @Override

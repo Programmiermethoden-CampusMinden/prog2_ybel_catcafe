@@ -14,7 +14,6 @@ import java.util.function.Consumer;
  * @param leftChild leftChild subtree
  * @param rightChild rightChild subtree
  * @param <T> parametric type of the node data
- * @throws NullPointerException if any parameter is {@code null}
  */
 public record Node<T extends Comparable<T>>(Tree<T> leftChild, T data, Tree<T> rightChild)
         implements Tree<T> {
@@ -37,10 +36,10 @@ public record Node<T extends Comparable<T>>(Tree<T> leftChild, T data, Tree<T> r
         int compareVal = this.data.compareTo(data);
         if (compareVal < 0) {
             // this.data < data: insert into rightChild subtree
-            return new Node(leftChild, this.data, rightChild.addData(data));
+            return new Node<>(leftChild, this.data, rightChild.addData(data));
         } else if (compareVal > 0) {
             // this.data > data: insert into leftChild subtree
-            return new Node(leftChild.addData(data), this.data, rightChild);
+            return new Node<>(leftChild.addData(data), this.data, rightChild);
         } else {
             // this.data == data: do nothing
             return this;

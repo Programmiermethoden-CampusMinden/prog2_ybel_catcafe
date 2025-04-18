@@ -58,7 +58,7 @@ public interface Tree<T extends Comparable<T>> extends Iterable<T> {
     /**
      * How many non-empty nodes are stored in this tree?
      *
-     * @return number of {@Link Node} elements
+     * @return number of {@link Node} elements
      */
     default long size() {
         return stream().count();
