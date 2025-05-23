@@ -6,6 +6,8 @@ import tree.Empty;
 import tree.Tree;
 import tree.TreeVisitor;
 
+import java.util.Optional;
+
 /** A cat café takes care of a number of cats. */
 public class CatCafe {
     private Tree<FelineOverLord> clowder = new Empty<>();
@@ -34,14 +36,14 @@ public class CatCafe {
      * @param name name of the cat
      * @return cat with the given name
      */
-    public FelineOverLord getCatByName(String name) throws NullPointerException{
+    public Optional<FelineOverLord> getCatByName(String name) throws NullPointerException{
         if (name == null) throw new NullPointerException("Cat has no name");
 
         for (FelineOverLord c : clowder) {
-            if (c.name().equals(name)) return c;
+            if (c.name().equals(name)) return Optional.ofNullable(c);
         }
 
-        return null;
+        return Optional.empty();
     }
 
     /**
