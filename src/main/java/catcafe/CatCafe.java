@@ -53,15 +53,15 @@ public class CatCafe {
      * @param maxWeight upper weight limit (exclusive)
      * @return cat within the weight limits
      */
-    public FelineOverLord getCatByWeight(int minWeight, int maxWeight) throws NullPointerException{
+    public Optional<FelineOverLord> getCatByWeight(int minWeight, int maxWeight) throws NullPointerException{
         if (minWeight < 0) throw new NullPointerException();
         if (maxWeight < minWeight) throw new NullPointerException();
 
         for (FelineOverLord c : clowder) {
-            if (c.weight() >= minWeight && c.weight() < maxWeight) return c;
+            if (c.weight() >= minWeight && c.weight() < maxWeight) return Optional.ofNullable(c);
         }
 
-        return null;
+        return Optional.empty();
     }
 
     /**
