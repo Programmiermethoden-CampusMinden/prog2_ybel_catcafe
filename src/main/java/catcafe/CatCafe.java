@@ -2,9 +2,9 @@ package catcafe;
 
 import static java.util.Objects.requireNonNull;
 
-import tree.Empty;
-import tree.Tree;
-import tree.TreeVisitor;
+import tree.*;
+
+import java.util.Optional;
 
 /** A cat café takes care of a number of cats. */
 public class CatCafe {
@@ -51,15 +51,19 @@ public class CatCafe {
      * @param maxWeight upper weight limit (exclusive)
      * @return cat within the weight limits
      */
-    public FelineOverLord getCatByWeight(int minWeight, int maxWeight) {
+    public Optional<FelineOverLord> getCatByWeight(int minWeight, int maxWeight) {
+        Optional<FelineOverLord> optional;
+
         if (minWeight < 0) return null;
         if (maxWeight < minWeight) return null;
 
-        for (FelineOverLord c : clowder) {
-            if (c.weight() >= minWeight && c.weight() < maxWeight) return c;
-        }
+        //for (FelineOverLord c : clowder) {
+        //    if (c.weight() >= minWeight && c.weight() < maxWeight) return c;
+        //}
 
-        return null;
+        return clowder.stream()
+            .filter(c->c.weight() >= minWeight && c.weight()< maxWeight)
+            .findFirst();
     }
 
     /**
