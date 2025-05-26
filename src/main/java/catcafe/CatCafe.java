@@ -2,9 +2,8 @@ package catcafe;
 
 import static java.util.Objects.requireNonNull;
 
-import tree.*;
-
 import java.util.Optional;
+import tree.*;
 
 /** A cat café takes care of a number of cats. */
 public class CatCafe {
@@ -37,11 +36,7 @@ public class CatCafe {
     public Optional<FelineOverLord> getCatByName(String name) {
         if (name == null) return null;
 
-        return
-            clowder.stream()
-            .filter(c->c.name().equals(name))
-            .findFirst();
-
+        return clowder.stream().filter(c -> c.name().equals(name)).findFirst();
     }
 
     /**
@@ -57,13 +52,13 @@ public class CatCafe {
         if (minWeight < 0) return null;
         if (maxWeight < minWeight) return null;
 
-        //for (FelineOverLord c : clowder) {
+        // for (FelineOverLord c : clowder) {
         //    if (c.weight() >= minWeight && c.weight() < maxWeight) return c;
-        //}
+        // }
 
         return clowder.stream()
-            .filter(c->c.weight() >= minWeight && c.weight()< maxWeight)
-            .findFirst();
+                .filter(c -> c.weight() >= minWeight && c.weight() < maxWeight)
+                .findFirst();
     }
 
     /**

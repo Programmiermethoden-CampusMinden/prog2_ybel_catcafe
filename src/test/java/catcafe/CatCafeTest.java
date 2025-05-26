@@ -3,47 +3,46 @@ package catcafe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CatCafeTest
-{
+/** Testing the {@link CatCafe} class. */
+public class CatCafeTest {
     private CatCafe catCafe;
     private FelineOverLord cat1;
     private FelineOverLord cat2;
 
+    /** setup. */
     @BeforeEach
-    void setup()
-    {
+    void setup() {
         catCafe = new CatCafe();
-        cat1 = new FelineOverLord("cat1",10);
-        cat2 = new FelineOverLord("cat2",20);
+        cat1 = new FelineOverLord("cat1", 10);
+        cat2 = new FelineOverLord("cat2", 20);
     }
 
+    /** Test to add cats. */
     @Test
-    void addCat()
-    {
+    void addCat() {
         catCafe.addCat(cat1);
         catCafe.addCat(cat2);
     }
 
+    /** this should count 0 then 2. */
     @Test
-    void getCatAmount()
-    {
+    void getCatAmount() {
         catCafe.getCatCount();
         catCafe.addCat(cat1);
         catCafe.addCat(cat2);
         catCafe.getCatCount();
     }
 
+    /** should return the cat. */
     @Test
-    void getCatByName()
-    {
+    void getCatByName() {
         catCafe.addCat(cat1);
         catCafe.getCatByName("cat1");
     }
 
+    /** should give an error bc no cat was added. */
     @Test
-    void getCatByNameWithNoCat()
-    {
+    void getCatByNameWithNoCat() {
         catCafe.getCatByName("cat1");
     }
-
 }
