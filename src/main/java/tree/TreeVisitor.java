@@ -7,6 +7,9 @@ package tree;
  */
 public interface TreeVisitor<T extends Comparable<T>> {
 
+
+    
+
     /**
      * Visit an empty node.
      *
