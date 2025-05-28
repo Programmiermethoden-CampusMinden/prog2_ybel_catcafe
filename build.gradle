@@ -36,6 +36,12 @@ sourceSets.test.java.srcDirs = ['src/test/java/']
 
 test {
     useJUnitPlatform()
+
+    testLogging {
+        events "passed", "failed", "skipped"
+        exceptionFormat "full"
+        showStandardStreams = true
+    }
 }
 
 checkstyle {
