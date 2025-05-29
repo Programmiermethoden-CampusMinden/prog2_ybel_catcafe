@@ -70,4 +70,8 @@ public class CatCafe {
     String accept(TreeVisitor<FelineOverLord> visitor) {
         return clowder.accept(visitor);
     }
+
+    public Tree<FelineOverLord> getClowder() {
+        return clowder;
+    }
 }
