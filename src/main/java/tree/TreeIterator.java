@@ -12,6 +12,7 @@ import java.util.Stack;
  * @param <T> parametric type of the node data
  */
 public class TreeIterator<T extends Comparable<T>> implements Iterator<T> {
+    //basiert auf einem Stack
     private final Stack<Tree<T>> stack;
 
     /**
@@ -19,18 +20,21 @@ public class TreeIterator<T extends Comparable<T>> implements Iterator<T> {
      *
      * @param root top-level node of the tree
      */
+
     public TreeIterator(Tree<T> root) {
         requireNonNull(root);
 
         stack = new Stack<>();
+        //immer zur tiefsten Node und push diese in stack
         pushAllLeftNodes(root);
     }
 
+    //gibt aus ob es nachfolger gibt
     @Override
     public boolean hasNext() {
         return !stack.isEmpty();
     }
-
+    //geht durch alle elemente durch
     @Override
     public T next() {
         if (hasNext()) {
@@ -44,7 +48,7 @@ public class TreeIterator<T extends Comparable<T>> implements Iterator<T> {
 
     private void pushAllLeftNodes(Tree<T> node) {
         requireNonNull(node);
-
+        //sobald root null ist abbruch sonst hole die sachen ins stack
         while (!node.isEmpty()) {
             stack.push(node);
             node = node.leftChild();

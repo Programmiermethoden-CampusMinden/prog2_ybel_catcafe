@@ -1,0 +1,10 @@
+Vorteile:
+Generisches Interface T kann auch in klassen außerhalb genutzt werden
+Kompakt (wenn geübt)
+Da generisch kann T mit allen objekten arbeiten
+
+
+Nachteile:
+Wirkt komplex wenn ungeübt
+Katzen mit gleichem gewicht gehen beim Comperator verloren
+es werden viele (auch leere objekte erzeugt)
