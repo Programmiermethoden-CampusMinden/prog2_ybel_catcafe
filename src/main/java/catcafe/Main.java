@@ -1,6 +1,8 @@
 package catcafe;
 
 import java.util.Optional;
+import tree.InOrderVisitor;
+import tree.PostOrderVisitor;
 
 /** Starter for the cat-café task. */
 public class Main {
@@ -33,6 +35,8 @@ public class Main {
         }catch(NullPointerException | IllegalArgumentException e){
             System.out.println("Fehlerhafte Eingabe: " + e.getMessage());
         }
+        System.out.println("InOrder: " + cafe.accept(new InOrderVisitor<>()));
+        System.out.println("PostOrder: " + cafe.accept(new PostOrderVisitor<>()));
 
     }
 }
