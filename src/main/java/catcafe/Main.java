@@ -1,5 +1,11 @@
 package catcafe;
 
+
+import tree.InOrderVisitor;
+import tree.PostOrderVisitor;
+import tree.TreeVisitor;
+
+
 /** Starter for the cat-café task. */
 public class Main {
     /**
@@ -17,13 +23,20 @@ public class Main {
 
         System.out.println("Es schnurren " + cafe.getCatCount() + " Samtpfötchen.");
 
-        FelineOverLord meow = cafe.getCatByWeight(3, 4);
-        if (meow != null) System.out.println("Gewicht [3,4]: " + meow);
+        cafe.getCatByWeight(3, 4).ifPresent(cat -> System.out.println("Gewicht [3,4]: " + cat));
 
-        meow = cafe.getCatByName("Morticia");
-        if (meow != null) System.out.println("Name 'Morticia': " + meow);
+        cafe.getCatByName("Morticia")
+                .ifPresent(cat -> System.out.println("Name 'Morticia': " + cat));
 
-        meow = cafe.getCatByName("Miss Chief Sooky");
-        if (meow != null) System.out.println("Name 'Miss Chief Sooky': " + meow);
+        cafe.getCatByName("Miss Chief Sooky")
+                .ifPresent(cat -> System.out.println("Name 'Miss Chief Sooky': " + cat));
+
+        TreeVisitor<FelineOverLord> inOrderVisitor = new InOrderVisitor<>();
+        String inOrderResult = cafe.accept(inOrderVisitor);
+        System.out.println("InOrder Traversierung: " + inOrderResult);
+
+        TreeVisitor<FelineOverLord> postOrderVisitor = new PostOrderVisitor<>();
+        String postOrderResult = cafe.accept(postOrderVisitor);
+        System.out.println("PostOrder Traversierung: " + postOrderResult);
     }
 }
