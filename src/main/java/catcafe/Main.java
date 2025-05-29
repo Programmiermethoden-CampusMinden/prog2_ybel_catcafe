@@ -17,13 +17,12 @@ public class Main {
 
         System.out.println("Es schnurren " + cafe.getCatCount() + " Samtpfötchen.");
 
-        FelineOverLord meow = cafe.getCatByWeight(3, 4);
-        if (meow != null) System.out.println("Gewicht [3,4]: " + meow);
-
-        meow = cafe.getCatByName("Morticia");
-        if (meow != null) System.out.println("Name 'Morticia': " + meow);
-
-        meow = cafe.getCatByName("Miss Chief Sooky");
-        if (meow != null) System.out.println("Name 'Miss Chief Sooky': " + meow);
+        // bearbeiteung mit Optional
+        // Ergebnis nur ausgeben, wenn ein passender Wert gefunden wurde (mit ifPresent)
+        cafe.getCatByWeight(3, 4).ifPresent(cat -> System.out.println("Gewicht [3,4]: " + cat));
+        // Optional benutzen, um Morticia auszugeben (aber nur wenn sie gefunden wurde)
+        cafe.getCatByName("Morticia").ifPresent(cat -> System.out.println("Name 'Morticia': " + cat));
+        // das Selbe fuer Miss Chief Sooky
+        cafe.getCatByName("Miss Chief Sooky").ifPresent(cat -> System.out.println("Name 'Miss Chief Sooky': " + cat));
     }
 }

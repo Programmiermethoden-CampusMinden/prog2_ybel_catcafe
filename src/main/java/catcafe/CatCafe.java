@@ -1,5 +1,8 @@
 package catcafe;
 
+import java.util.Optional;
+import java.util.stream.StreamSupport;
+
 import static java.util.Objects.requireNonNull;
 
 import tree.Empty;
@@ -34,14 +37,14 @@ public class CatCafe {
      * @param name name of the cat
      * @return cat with the given name
      */
-    public FelineOverLord getCatByName(String name) {
-        if (name == null) return null;
-
-        for (FelineOverLord c : clowder) {
-            if (c.name().equals(name)) return c;
-        }
-
-        return null;
+    public Optional<FelineOverLord> getCatByName(String name) {
+        // Optional.empty() zurueckgeben, wenn kein Name als Parameter uebergeben wurde (um Fehler zu vermeiden)
+        if (name == null) return Optional.empty();
+        // Mit StreamSupport und findFirst wird automatisch ein Optional zurueckgegeben
+        // Optional.empty() wenn keine passende Katze gefunden wurde
+        return StreamSupport.stream(clowder.spliterator(), false)
+            .filter(c -> c.name().equals(name))
+            .findFirst();
     }
 
     /**
@@ -51,15 +54,12 @@ public class CatCafe {
      * @param maxWeight upper weight limit (exclusive)
      * @return cat within the weight limits
      */
-    public FelineOverLord getCatByWeight(int minWeight, int maxWeight) {
-        if (minWeight < 0) return null;
-        if (maxWeight < minWeight) return null;
-
-        for (FelineOverLord c : clowder) {
-            if (c.weight() >= minWeight && c.weight() < maxWeight) return c;
-        }
-
-        return null;
+    public Optional<FelineOverLord> getCatByWeight(int minWeight, int maxWeight) {
+        return StreamSupport.stream(clowder.spliterator(), false)
+        .filter(c -> c.weight() >= minWeight && c.weight() < maxWeight)
+        // Optional.empty() wird zurueckgegeben, wenn keine passende Katze gefunden wurde (durch findFirst)
+        // sonst wird die erste gefundene Katze als Optional<FelineOverLord> zurueckgegeben
+        .findFirst();
     }
 
     /**
