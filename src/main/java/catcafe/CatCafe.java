@@ -6,6 +6,8 @@ import tree.Empty;
 import tree.Tree;
 import tree.TreeVisitor;
 
+import java.util.Optional;
+
 /** A cat café takes care of a number of cats. */
 public class CatCafe {
     private Tree<FelineOverLord> clowder = new Empty<>();
@@ -34,14 +36,13 @@ public class CatCafe {
      * @param name name of the cat
      * @return cat with the given name
      */
-    public FelineOverLord getCatByName(String name) {
-        if (name == null) return null;
+    public Optional<FelineOverLord> getCatByName(String name) throws NullPointerException{
+        if (name == null) throw new NullPointerException("kein Name eingegeben");
 
         for (FelineOverLord c : clowder) {
-            if (c.name().equals(name)) return c;
+            if (c.name().equals(name)) return Optional.ofNullable(c);
         }
-
-        return null;
+        return Optional.empty();
     }
 
     /**
@@ -51,15 +52,15 @@ public class CatCafe {
      * @param maxWeight upper weight limit (exclusive)
      * @return cat within the weight limits
      */
-    public FelineOverLord getCatByWeight(int minWeight, int maxWeight) {
-        if (minWeight < 0) return null;
-        if (maxWeight < minWeight) return null;
+    public Optional<FelineOverLord>  getCatByWeight(int minWeight, int maxWeight) throws IllegalArgumentException{
+        if (minWeight < 0) throw new IllegalArgumentException("Katze kann kein Gewicht unter 0 haben");
+        if (maxWeight < minWeight) throw new IllegalArgumentException("Katze maxWeight darf nicht kleiner sein als minWeight");
 
         for (FelineOverLord c : clowder) {
-            if (c.weight() >= minWeight && c.weight() < maxWeight) return c;
+            if (c.weight() >= minWeight && c.weight() < maxWeight) return Optional.ofNullable(c);
         }
 
-        return null;
+        return Optional.empty();
     }
 
     /**

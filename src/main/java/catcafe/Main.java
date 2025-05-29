@@ -1,5 +1,7 @@
 package catcafe;
 
+import java.util.Optional;
+
 /** Starter for the cat-café task. */
 public class Main {
     /**
@@ -17,13 +19,20 @@ public class Main {
 
         System.out.println("Es schnurren " + cafe.getCatCount() + " Samtpfötchen.");
 
-        FelineOverLord meow = cafe.getCatByWeight(3, 4);
-        if (meow != null) System.out.println("Gewicht [3,4]: " + meow);
 
-        meow = cafe.getCatByName("Morticia");
-        if (meow != null) System.out.println("Name 'Morticia': " + meow);
+        try {
+            Optional<FelineOverLord> meow = cafe.getCatByWeight(3, 4);
+            meow.ifPresent(mew -> System.out.println("Gewicht [3,4]: " + mew));
 
-        meow = cafe.getCatByName("Miss Chief Sooky");
-        if (meow != null) System.out.println("Name 'Miss Chief Sooky': " + meow);
+            meow = cafe.getCatByName("Morticia");
+            meow.ifPresent(mew-> System.out.println("Name 'Morticia': " + mew));
+
+            meow = cafe.getCatByName("Miss Chief Sooky");
+            meow.ifPresent(mew -> System.out.println("Name 'Miss Chief Sooky': " + mew));
+
+        }catch(NullPointerException | IllegalArgumentException e){
+            System.out.println("Fehlerhafte Eingabe: " + e.getMessage());
+        }
+
     }
 }
