@@ -9,6 +9,8 @@ package catcafe;
 public record FelineOverLord(String name, int weight) implements Comparable<FelineOverLord> {
     @Override
     public int compareTo(FelineOverLord o) {
-        return weight - o.weight;
+        int cmp = Integer.compare(weight, o.weight);
+        if (cmp != 0) return cmp;
+        return name.compareTo(o.name());
     }
 }
