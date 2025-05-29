@@ -2,6 +2,8 @@ package catcafe;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
+
 import tree.Empty;
 import tree.Tree;
 import tree.TreeVisitor;
