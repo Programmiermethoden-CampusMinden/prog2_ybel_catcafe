@@ -37,11 +37,9 @@ public class CatCafe {
     public Optional<FelineOverLord> getCatByName(String name) {
         if (name == null) return Optional.empty();
 
-        for (FelineOverLord c : clowder) {
-            if (c.name().equals(name)) return c;
-        }
-
-        return null;
+        return clowder.stream()
+            .filter(c -> c.name().equals(name))
+            .findFirst();
     }
 
     /**
