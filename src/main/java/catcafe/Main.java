@@ -35,7 +35,13 @@ public class Main {
             () -> System.out.println("Keine Katze mit  Namen 'Miss Chief Sooky' gefunden.")
         );
 
-        meow = cafe.getCatByName("Miss Chief Sooky");
-        if (meow != null) System.out.println("Name 'Miss Chief Sooky': " + meow);
+        InOrderVisitor<FelineOverLord> inorder = new InOrderVisitor<>();
+        String result = cafe.accept(inorder);
+        System.out.println("InOrder-Ausgabe: " + result);
+
+        // Neu: PostOrder Traversierung ebenfalls aufrufen
+        PostOrderVisitor<FelineOverLord> postorder = new PostOrderVisitor<>();
+        String postorderResult = cafe.accept(postorder);
+        System.out.println("PostOrder-Ausgabe: " + postorderResult);
     }
 }
