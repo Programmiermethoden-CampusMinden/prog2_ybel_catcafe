@@ -104,19 +104,19 @@ public class EmptyTest {
         Empty<Dummy> e = new Empty<>();
 
         assertEquals(
-                "",
-                e.accept(
-                        new TreeVisitor<>() {
-                            @Override
-                            public String visit(Empty<Dummy> node) {
-                                return "";
-                            }
+            "",
+            e.accept(
+                new TreeVisitor<>() {
+                    @Override
+                    public String visit(Empty<Dummy> node) {
+                        return "";
+                    }
 
-                            @Override
-                            public String visit(Node<Dummy> node) {
-                                return node.data().toString();
-                            }
-                        }));
+                    @Override
+                    public String visit(Node<Dummy> node) {
+                        return node.data().toString();
+                    }
+                }));
     }
 
     /** Iterating should not quite be possible. */

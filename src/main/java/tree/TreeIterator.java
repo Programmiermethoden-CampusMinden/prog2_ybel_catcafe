@@ -1,29 +1,33 @@
 package tree;
 
-import static java.util.Objects.requireNonNull;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
 /**
- * Iterator for our binary search trees {@link Tree}.
- *
- * @param <T> parametric type of the node data
+ * Ein Iterator, der einen Binärbaum (Tree) in In-Order-Reihenfolge durchläuft.
+ * @param <T> Der Typ der Elemente im Baum (muss Comparable sein).
  */
 public class TreeIterator<T extends Comparable<T>> implements Iterator<T> {
-    private final Stack<Tree<T>> stack;
+
+    private final Stack<Tree<T>> stack = new Stack<>();
 
     /**
-     * Create a new Iterator for a given tree.
-     *
-     * @param root top-level node of the tree
+     * Konstruktor: Initialisiert den Iterator mit einem Baum.
+     * @param root Die Wurzel des Baumes
      */
     public TreeIterator(Tree<T> root) {
-        requireNonNull(root);
+        pushLeft(root);
+    }
 
-        stack = new Stack<>();
-        pushAllLeftNodes(root);
+    /**
+     * Speichert alle linken Kinder des gegebenen Baumes im Stack.
+     */
+    private void pushLeft(Tree<T> tree) {
+        while (!tree.isEmpty()) {
+            stack.push(tree);
+            tree = tree.leftChild();
+        }
     }
 
     @Override
@@ -33,21 +37,13 @@ public class TreeIterator<T extends Comparable<T>> implements Iterator<T> {
 
     @Override
     public T next() {
-        if (hasNext()) {
-            Tree<T> node = stack.pop();
-            pushAllLeftNodes(node.rightChild());
-            return node.data();
-        } else {
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
-    }
 
-    private void pushAllLeftNodes(Tree<T> node) {
-        requireNonNull(node);
-
-        while (!node.isEmpty()) {
-            stack.push(node);
-            node = node.leftChild();
-        }
+        Tree<T> node = stack.pop();
+        T result = node.data();
+        pushLeft(node.rightChild());
+        return result;
     }
 }

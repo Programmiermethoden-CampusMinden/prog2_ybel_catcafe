@@ -32,24 +32,24 @@ public class NodeTest {
     @Test
     public void testNodeCtorDataNull() {
         assertThrows(
-                NullPointerException.class,
-                () -> new Node<Dummy>(new Empty<>(), null, new Empty<>()));
+            NullPointerException.class,
+            () -> new Node<Dummy>(new Empty<>(), null, new Empty<>()));
     }
 
     /** Ctor should not allow {@code null} left child. */
     @Test
     public void testNodeCtorLeftNull() {
         assertThrows(
-                NullPointerException.class,
-                () -> new Node<>(null, new Dummy("wuppie", 3), new Empty<>()));
+            NullPointerException.class,
+            () -> new Node<>(null, new Dummy("wuppie", 3), new Empty<>()));
     }
 
     /** Ctor should not allow {@code null} right child. */
     @Test
     public void testNodeCtorRigtNull() {
         assertThrows(
-                NullPointerException.class,
-                () -> new Node<>(new Empty<>(), new Dummy("wuppie", 3), null));
+            NullPointerException.class,
+            () -> new Node<>(new Empty<>(), new Dummy("wuppie", 3), null));
     }
 
     /** Ctor should create a single node. */
@@ -406,19 +406,19 @@ public class NodeTest {
         // A(, )
 
         assertEquals(
-                "wuppie",
-                n.accept(
-                        new TreeVisitor<>() {
-                            @Override
-                            public String visit(Empty<Dummy> node) {
-                                return "";
-                            }
+            "wuppie",
+            n.accept(
+                new TreeVisitor<>() {
+                    @Override
+                    public String visit(Empty<Dummy> node) {
+                        return "";
+                    }
 
-                            @Override
-                            public String visit(Node<Dummy> node) {
-                                return node.data().toString();
-                            }
-                        }));
+                    @Override
+                    public String visit(Node<Dummy> node) {
+                        return node.data().toString();
+                    }
+                }));
     }
 
     /** Iterating should not quite be possible. */

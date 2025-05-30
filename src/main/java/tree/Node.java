@@ -16,7 +16,7 @@ import java.util.function.Consumer;
  * @param <T> parametric type of the node data
  */
 public record Node<T extends Comparable<T>>(Tree<T> leftChild, T data, Tree<T> rightChild)
-        implements Tree<T> {
+    implements Tree<T> {
     /** Create a new node: Ensure that all arguments are not {@code null}. */
     public Node {
         requireNonNull(data);
