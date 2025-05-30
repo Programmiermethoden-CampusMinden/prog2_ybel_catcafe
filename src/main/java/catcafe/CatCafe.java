@@ -34,8 +34,8 @@ public class CatCafe {
      * @param name name of the cat
      * @return cat with the given name
      */
-    public FelineOverLord getCatByName(String name) {
-        if (name == null) return null;
+    public Optional<FelineOverLord> getCatByName(String name) {
+        if (name == null) return Optional.empty();
 
         for (FelineOverLord c : clowder) {
             if (c.name().equals(name)) return c;
