@@ -29,8 +29,11 @@ public class Main {
             () -> System.out.println("Keine Katze mit  Namen 'Morticia' gefunden")
         );
 
-        meow = cafe.getCatByName("Morticia");
-        if (meow != null) System.out.println("Name 'Morticia': " + meow);
+        //getCatByName gibt nun Optional zurück
+        cafe.getCatByName("Miss Chief Sooky").ifPresentOrElse(
+            meow -> System.out.println("Name 'Miss Chief Sooky': " + meow),
+            () -> System.out.println("Keine Katze mit  Namen 'Miss Chief Sooky' gefunden.")
+        );
 
         meow = cafe.getCatByName("Miss Chief Sooky");
         if (meow != null) System.out.println("Name 'Miss Chief Sooky': " + meow);
