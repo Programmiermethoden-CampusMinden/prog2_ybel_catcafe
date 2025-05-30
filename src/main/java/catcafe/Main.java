@@ -1,5 +1,8 @@
 package catcafe;
 
+import tree.InOrderVisitor;
+import tree.PostOrderVisitor;
+
 /** Starter for the cat-café task. */
 public class Main {
     /**

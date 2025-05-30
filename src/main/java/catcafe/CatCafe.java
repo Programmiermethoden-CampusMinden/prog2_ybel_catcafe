@@ -6,6 +6,8 @@ import tree.Empty;
 import tree.Tree;
 import tree.TreeVisitor;
 
+import java.util.Optional;
+
 /** A cat café takes care of a number of cats. */
 public class CatCafe {
     private Tree<FelineOverLord> clowder = new Empty<>();
@@ -71,3 +73,4 @@ public class CatCafe {
         return clowder.accept(visitor);
     }
 }
+
