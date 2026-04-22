@@ -18,29 +18,33 @@
 *.bak
 .DS_Store
 ._*
-desktop.ini
 
 
 # Temporary directory #
 #######################
 tmp/
 temp/
+resources/
+docs/
+pdf/
 
 
-# Logging #
-###########
-*.log
-logs/
-
-
-# Game Generated Files #
-########################
-dungeon_config.json
+# Hugo / Pandoc related files #
+###############################
+.hugo_build.lock
+local.yaml
+/data/readings.yaml
+.pandoc
+build
+deps.mk
+book.md
+_sidebar.md
 
 
 # JAVA, Scala #
 ###############
 *.class
+*.log
 *.jar
 hs_err_pid*
 replay_pid*
@@ -49,7 +53,6 @@ replay_pid*
 **/bin/
 **/out/
 **/target/
-**/reports/
 .gradle/
 # don't ignore any gradle wrapper files
 !gradle/
